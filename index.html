@@ -1,0 +1,253 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Georges Kanaan</title>
+    
+    <!-- Google Fonts -->
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600&display=swap" rel="stylesheet">
+
+    <!-- CSS -->
+    <style>
+        :root {
+            --background-color: #000000;
+            --text-color: #FFFFFF;
+            --highlight-color: #C0392B; /* Deep Red */
+            --font-primary: 'Inter', sans-serif;
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            background-color: var(--background-color);
+            color: var(--text-color);
+            font-family: var(--font-primary);
+            line-height: 1.6;
+            padding: 20px;
+        }
+
+        header {
+            display: flex;
+            justify-content: flex-end;
+            align-items: center;
+            margin-bottom: 40px;
+        }
+
+        .language-switcher a {
+            color: var(--text-color);
+            text-decoration: none;
+            font-weight: 600;
+            padding: 8px 16px;
+            transition: color 0.3s, background-color 0.3s;
+            border: 2px solid var(--highlight-color);
+            border-radius: 4px;
+        }
+
+        .language-switcher a:hover {
+            background-color: var(--highlight-color);
+            color: var(--background-color);
+        }
+
+        .title-section {
+            text-align: center;
+            margin-bottom: 20px;
+        }
+
+        .title-section h1 {
+            font-size: 2.5rem;
+            margin-bottom: 10px;
+            font-weight: 600;
+        }
+
+        .title-section h2 {
+            font-size: 1.5rem;
+            font-weight: 300;
+            color: var(--highlight-color);
+        }
+
+        nav {
+            display: flex;
+            justify-content: center;
+            flex-wrap: wrap;
+            gap: 15px;
+            margin-bottom: 40px;
+        }
+
+        nav a {
+            color: var(--text-color);
+            text-decoration: none;
+            padding: 10px 15px;
+            transition: color 0.3s, background-color 0.3s;
+            font-weight: 500;
+            display: flex;
+            align-items: center;
+            gap: 5px;
+        }
+
+        nav a:hover {
+            color: var(--background-color);
+            background-color: var(--highlight-color);
+            border-radius: 4px;
+        }
+
+        main {
+            max-width: 800px;
+            margin: 0 auto;
+        }
+
+        section {
+            margin-bottom: 40px;
+        }
+
+        section h3 {
+            font-size: 1.75rem;
+            margin-bottom: 20px;
+            color: var(--highlight-color);
+        }
+
+        ul.publications {
+            list-style-type: none;
+        }
+
+        ul.publications li {
+            margin-bottom: 15px;
+        }
+
+        ul.publications li strong {
+            color: var(--highlight-color);
+        }
+
+        footer {
+            text-align: center;
+            padding: 20px 0;
+            border-top: 1px solid rgba(255, 255, 255, 0.2);
+            font-size: 0.9rem;
+            color: rgba(255, 255, 255, 0.8);
+        }
+
+        /* Responsive Design */
+        @media (max-width: 600px) {
+            .title-section h1 {
+                font-size: 2rem;
+            }
+
+            .title-section h2 {
+                font-size: 1.25rem;
+            }
+
+            nav {
+                flex-direction: column;
+                align-items: center;
+            }
+
+            .language-switcher {
+                width: 100%;
+                display: flex;
+                justify-content: flex-end;
+            }
+        }
+
+        /* Logo Styles */
+        .logo {
+            width: 20px;
+            height: 20px;
+            fill: var(--text-color);
+            transition: fill 0.3s;
+        }
+
+        nav a:hover .logo {
+            fill: var(--background-color);
+        }
+    </style>
+</head>
+<body>
+    <header>
+        <div class="language-switcher">
+            <a href="https://gkanaan.com/index_fr.html">FR</a>
+        </div>
+    </header>
+
+    <div class="title-section">
+        <h1>Georges Kanaan</h1>
+        <h2>Simplicity in Mind</h2>
+    </div>
+
+    <nav>
+        <a href="mailto:georges@gkanaan.com">Email</a>
+        <a href="https://gkanaan.com/cv.pdf" target="_blank">Curriculum Vitae</a>
+        <a href="https://github.com/Ge0rges" target="_blank" aria-label="GitHub">
+            <!-- GitHub SVG Logo -->
+            <svg class="logo" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24">
+                <path d="M12 .297c-6.63 0-12 5.373-12 12 0 5.303 
+                3.438 9.8 8.205 11.385.6.113.82-.258.82-.577 
+                0-.285-.01-1.04-.015-2.04-3.338.724-4.042-1.61-4.042-1.61 
+                -.546-1.385-1.333-1.754-1.333-1.754-1.089-.744.084-.729.084-.729 
+                1.205.084 1.838 1.236 1.838 1.236 1.07 1.835 2.807 1.305 
+                3.495.998.108-.776.418-1.305.76-1.605-2.665-.3-5.466-1.332-5.466-5.93 
+                0-1.31.468-2.38 1.235-3.22-.135-.303-.54-1.523.105-3.176 
+                0 0 1.005-.322 3.3 1.23a11.52 11.52 0 013.003-.404c1.02.005 2.045.138 
+                3.003.404 2.28-1.552 3.285-1.23 3.285-1.23.645 1.653.24 2.873.12 
+                3.176.765.84 1.23 1.91 1.23 3.22 0 4.61-2.805 5.625-5.475 
+                5.92.42.36.81 1.096.81 2.22 0 1.606-.015 2.896-.015 
+                3.286 0 .315.21.69.825.57C20.565 22.092 24 17.592 24 
+                12.297c0-6.627-5.373-12-12-12"/>
+            </svg>
+            GitHub
+        </a>
+        <a href="https://orcid.org/0000-0002-5721-1138" target="_blank" aria-label="ORCiD">
+            <!-- ORCiD SVG Logo -->
+            <svg class="logo" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24">
+                <path d="M12 0C5.373 0 0 5.373 0 
+                12c0 5.303 3.438 9.8 8.205 
+                11.385.6.113.82-.258.82-.577 
+                0-.285-.01-1.04-.015-2.04-3.338.724-4.042-1.61-4.042-1.61 
+                -.546-1.385-1.333-1.754-1.333-1.754-1.089-.744.084-.729.084-.729 
+                1.205.084 1.838 1.236 1.838 1.236 1.07 1.835 2.807 1.305 
+                3.495.998.108-.776.418-1.305.76-1.605-2.665-.3-5.466-1.332-5.466-5.93 
+                0-1.31.468-2.38 1.235-3.22-.135-.303-.54-1.523.105-3.176 
+                0 0 1.005-.322 3.3 1.23a11.52 11.52 0 013.003-.404c1.02.005 2.045.138 
+                3.003.404 2.28-1.552 3.285-1.23 3.285-1.23.645 1.653.24 2.873.12 
+                3.176.765.84 1.23 1.91 1.23 3.22 0 4.61-2.805 5.625-5.475 
+                5.92.42.36.81 1.096.81 2.22 0 1.606-.015 2.896-.015 
+                3.286 0 .315.21.69.825.57C20.565 22.092 24 17.592 24 
+                12c0-6.627-5.373-12-12-12z"/>
+            </svg>
+            ORCiD
+        </a>
+    </nav>
+
+    <main>
+        <section>
+            <h3>Publications</h3>
+            <ul class="publications">
+                <li>
+                    Georges Kanaan, Tori M. Hoehler, Go Iwahana, and Jody W. Deming. 2023. <strong>Modeled energetics of bacterial communities in ancient subzero brines.</strong> Frontiers in Microbiology: Studies on life at the energetic edge. <a href="https://doi.org/10.3389/fmicb.2023.1206641" target="_blank" style="color: var(--highlight-color);">PDF</a>
+                </li>
+                <li>
+                    Georges Kanaan, Kai Wen Zheng and Lucas Fenaux. 2021. <strong>A Novel Approach to Lifelong Learning: The Plastic Support Structure.</strong> arXiv 2106.06298. <a href="https://gkanaan.com/pss.pdf" target="_blank" style="color: var(--highlight-color);">PDF</a>
+                </li>
+                <li>
+                    Steve Mann, Zhiyang Pan, Yi Tao, Anqi Gao, Xingchen Tao, Danson Evan Garcia, Dawei Shi, and Georges Kannan. 2020. <strong>Face Recognition and Rehabilitation: A Wearable Assistive and Training System for Prosopagnosia.</strong> In the 2020 IEEE International Conference on Systems, Man and Cybernetics (SMC’20). <a href="https://gkanaan.com/ieeeprosopagnosia2020.pdf" target="_blank" style="color: var(--highlight-color);">PDF</a>
+                </li>
+                <li>
+                    Steve Mann, Derek Lam, Kyle E. Mathewson, Cayden Pierce, Jeremy Stairs, Jesse Hernandez, Georges Kanaan, Luke Piette, Humza Khokhar, and Christina Mann. 2019. <strong>The Human Eye as a Camera.</strong> In the IEEE International Conference on E-health Networking, Application & Services (HealthCom’19). <a href="https://gkanaan.com/ieeeeyeasacamera.pdf" target="_blank" style="color: var(--highlight-color);">PDF</a>
+                </li>
+            </ul>
+        </section>
+    </main>
+
+    <footer>
+        &copy; <span id="currentYear"></span> Georges Kanaan. All rights reserved.
+    </footer>
+
+    <!-- JavaScript to Update Current Year -->
+    <script>
+        document.getElementById('currentYear').textContent = new Date().getFullYear();
+    </script>
+</body>
+</html>
