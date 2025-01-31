@@ -74,31 +74,44 @@
     <!-- Lightbox JS -->
     <script src="https://cdnjs.cloudflare.com/ajax/libs/lightbox2/2.11.3/js/lightbox.min.js"></script>
 
-    <!-- JavaScript to Load Images Dynamically -->
+    <!-- JavaScript to Load Images via GitHub API -->
     <script>
+        const GITHUB_USER = "Ge0rges";  // Replace with your GitHub username
+        const REPO_NAME = "ge0rges.github.com";  // Replace with your repository name
+        const BRANCH = "main"; // Change to "master" if using an older repo
+        const FOLDER_PATH = "assets/photos"; // Path to photos in the repository
+
         async function loadPhotos() {
             const gallery = document.getElementById('photo-gallery');
+            const apiUrl = `https://api.github.com/repos/${GITHUB_USER}/${REPO_NAME}/contents/${FOLDER_PATH}?ref=${BRANCH}`;
 
             try {
-                // Fetch the list of images from the server
-                const response = await fetch('assets/photos/');
-                const text = await response.text();
+                const response = await fetch(apiUrl);
+                if (!response.ok) throw new Error("GitHub API request failed", response);
+                
+                const data = await response.json();
 
-                // Extract image filenames using regex (assumes Apache/Nginx directory listing)
-                const regex = /href="([^"]+\.(jpg|jpeg|png|gif|webp))"/gi;
-                let match;
-                while ((match = regex.exec(text)) !== null) {
-                    const imgSrc = `assets/photos/${match[1]}`;
+                // Filter images only (JPG, PNG, GIF, WEBP)
+                const imageFiles = data.filter(file => /\.(jpg|jpeg|png|gif|webp)$/i.test(file.name));
+
+                if (imageFiles.length === 0) {
+                    gallery.innerHTML = "<p>No images found.</p>";
+                    return;
+                }
+
+                imageFiles.forEach(file => {
+                    const imgSrc = file.download_url;
                     const imgElement = `
                         <a href="${imgSrc}" data-lightbox="gallery">
-                            <img src="${imgSrc}" alt="Photo">
+                            <img src="${imgSrc}" alt="${file.name}">
                         </a>
                     `;
                     gallery.innerHTML += imgElement;
-                }
+                });
+
             } catch (error) {
                 console.error("Error loading images:", error);
-                gallery.innerHTML = "<p>Could not load photos. Make sure directory listing is enabled.</p>";
+                gallery.innerHTML = "<p>Could not load photos. Please check your GitHub repository settings.</p>";
             }
         }
 
