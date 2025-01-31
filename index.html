@@ -155,30 +155,25 @@
 
         /* Logo Styles */
         .logo {
-            width: var(--logo-size);
-            height: var(--logo-size);
-            transition: fill 0.3s;
+        width: 24px;
+        height: 24px;
         }
 
-        nav a:hover .logo {
-            /* Optionally change logo color on hover if necessary */
+        /* Specific colors for each icon */
+        .email-logo {
+            filter: invert(17%) sepia(89%) saturate(7493%) hue-rotate(354deg) brightness(92%) contrast(88%);
         }
 
-        /* Specific Logo Colors */
-        .logo-github {
-            fill: #181717; /* GitHub Dark */
+        .cv-logo {
+            filter: invert(23%) sepia(62%) saturate(493%) hue-rotate(162deg) brightness(96%) contrast(92%);
         }
 
-        .logo-orcid {
-            fill: #A6CE39; /* ORCiD Orange */
+        .github-logo {
+            filter: invert(46%) sepia(0%) saturate(0%) hue-rotate(164deg) brightness(89%) contrast(85%);
         }
 
-        .logo-email {
-            fill: #D44638; /* Common Email Red */
-        }
-
-        .logo-cv {
-            fill: #4A90E2; /* Common CV Blue */
+        .orcid-logo {
+            filter: invert(43%) sepia(87%) saturate(425%) hue-rotate(72deg) brightness(94%) contrast(86%);
         }
     </style>
 </head>
@@ -196,46 +191,19 @@
 
     <nav>
         <a href="mailto:georges@gkanaan.com" aria-label="Email">
-            <!-- Email SVG Logo -->
-            <svg class="logo logo-email" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512">
-                <path d="M502.3 190.8l-192-160c-12.2-10.2-29.7-10.2-41.9 0l-192 160C68.7 201 64 211.3 64 222.6V432c0 26.5 21.5 48 48 48h288c26.5 0 48-21.5 48-48V222.6c0-11.3-4.7-21.6-13.7-31.8zM256 304c-17.7 0-32-14.3-32-32s14.3-32 32-32 32 14.3 32 32-14.3 32-32 32zm160-160H96l160-133.3L256 144l160-133.3L416 144z"/>
-            </svg>
+            <img src="https://cdn.jsdelivr.net/npm/simple-icons@v5/icons/gmail.svg" alt="Email" class="logo email-logo">
             Email
         </a>
         <a href="https://gkanaan.com/cv.pdf" target="_blank" aria-label="Curriculum Vitae">
-            <!-- CV SVG Logo -->
-            <svg class="logo logo-cv" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 384 512">
-                <path d="M224 136V0H24C10.7 0 0 10.7 0 24v464c0 13.3 10.7 24 24 24h336c13.3 0 24-10.7 24-24V160H248c-13.3 0-24-10.7-24-24zm64 296H96V48h128v104c0 13.3 10.7 24 24 24h104v280z"/>
-            </svg>
+            <img src="https://cdn.jsdelivr.net/npm/simple-icons@v5/icons/readdotcv.svg" alt="Curriculum Vitae" class="logo cv-logo">
             Curriculum Vitae
         </a>
         <a href="https://github.com/Ge0rges" target="_blank" aria-label="GitHub">
-            <!-- GitHub Colored SVG Logo -->
-            <svg class="logo logo-github" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24">
-                <path d="M12 0C5.373 0 0 5.373 0 12c0 5.303 
-                3.438 9.8 8.205 11.385.6.113.82-.258.82-.577 
-                0-.285-.01-1.04-.015-2.04-3.338.724-4.042-1.61-4.042-1.61 
-                -.546-1.385-1.333-1.754-1.333-1.754-1.089-.744.084-.729.084-.729 
-                1.205.084 1.838 1.236 1.838 1.236 1.07 1.835 2.807 1.305 
-                3.495.998.108-.776.418-1.305.76-1.605-2.665-.3-5.466-1.332-5.466-5.93 
-                0-1.31.468-2.38 1.235-3.22-.135-.303-.54-1.523.105-3.176 
-                0 0 1.005-.322 3.3 1.23a11.52 11.52 0 013.003-.404c1.02.005 2.045.138 
-                3.003.404 2.28-1.552 3.285-1.23 3.285-1.23.645 1.653.24 2.873.12 
-                3.176.765.84 1.23 1.91 1.23 3.22 0 4.61-2.805 5.625-5.475 
-                5.92.42.36.81 1.096.81 2.22 0 1.606-.015 2.896-.015 
-                3.286 0 .315.21.69.825.57C20.565 22.092 24 17.592 24 
-                12c0-6.627-5.373-12-12-12z"/>
-            </svg>
+            <img src="https://cdn.jsdelivr.net/npm/simple-icons@v5/icons/github.svg" alt="GitHub" class="logo github-logo">
             GitHub
         </a>
         <a href="https://orcid.org/0000-0001-2345-6789" target="_blank" aria-label="ORCiD">
-            <!-- ORCiD Colored SVG Logo -->
-            <svg class="logo logo-orcid" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256">
-                <path d="M128,0C57.31,0,0,57.31,0,128c0,70.69,57.31,128,128,128
-                    s128-57.31,128-128C256,57.31,198.69,0,128,0z M87.21,193.68h-8.43v-32h8.43
-                    v32z M111.71,193.68h-8.43v-32h8.43V193.68z M136.21,193.68h-8.43v-32h8.43
-                    V193.68z M160.71,193.68h-8.43v-32h8.43V193.68z"/>
-            </svg>
+            <img src="https://cdn.jsdelivr.net/npm/simple-icons@v5/icons/orcid.svg" alt="ORCiD" class="logo orcid-logo">
             ORCiD
         </a>
     </nav>
