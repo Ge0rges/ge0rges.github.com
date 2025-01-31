@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Photography</title>
+    <title>Georges Kanaan - Photography</title>
 
     <!-- Google Fonts -->
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600&display=swap" rel="stylesheet">
@@ -17,19 +17,50 @@
             --background-color: #000000;
             --text-color: #E3F2FD; /* Ice White */
             --highlight-color: #5DA9E9; /* Glacier Blue */
+            --hover-color: #76C7C0; /* Iceberg Teal */
+            --link-color: #A1E3FF; /* Arctic Cyan */
+            --link-hover-color: #1E6091; /* Frozen Sapphire */
+            --border-color: #B0BEC5; /* Frost Gray */
+            --font-primary: 'Inter', sans-serif;
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
         }
 
         body {
             background-color: var(--background-color);
             color: var(--text-color);
-            font-family: 'Inter', sans-serif;
+            font-family: var(--font-primary);
             text-align: center;
             padding: 20px;
         }
 
-        h1 {
-            color: var(--highlight-color);
+        header {
+            display: flex;
+            justify-content: flex-end;
+            align-items: center;
+            margin-bottom: 40px;
+        }
+
+        .title-section {
+            text-align: center;
             margin-bottom: 20px;
+        }
+
+        .title-section h1 {
+            font-size: 2.5rem;
+            margin-bottom: 10px;
+            font-weight: 600;
+            color: var(--highlight-color);
+        }
+
+        .title-section h2 {
+            font-size: 1.5rem;
+            font-weight: 300;
+            color: var(--highlight-color);
         }
 
         .gallery {
@@ -44,7 +75,6 @@
 
         .gallery a {
             display: block;
-            border-radius: 8px;
             overflow: hidden;
             transition: transform 0.3s ease;
         }
@@ -57,25 +87,41 @@
             width: 100%;
             height: auto;
             display: block;
-            border-radius: 8px;
+        }
+
+        footer {
+            text-align: center;
+            padding: 20px 0;
+            border-top: 1px solid var(--border-color);
+            font-size: 0.9rem;
+            color: rgba(255, 255, 255, 0.8);
+        }
+
+        a {
+            color: var(--link-color);
+            text-decoration: none;
+        }
+
+        a:hover {
+            color: var(--link-hover-color);
         }
     </style>
 </head>
 <body>
 
-    <h1><a href="#" id="back-link">Georges Kanaan</a></h1>
+    <div class="title-section">
+        <h1><a href="#" id="back-link">Georges Kanaan</a></h1>
+    </div>
 
     <script>
         document.addEventListener("DOMContentLoaded", function () {
-            // Get the referring page
             var referrer = document.referrer;
             var link = document.getElementById("back-link");
-    
-            // Check if the user came from index_fr.html
+
             if (referrer.includes("index_fr.html")) {
                 link.href = "index_fr.html";
             } else {
-                link.href = "index.html"; // Default to index.html
+                link.href = "index.html";
             }
         });
     </script>
@@ -87,12 +133,12 @@
     <!-- Lightbox JS -->
     <script src="https://cdnjs.cloudflare.com/ajax/libs/lightbox2/2.11.3/js/lightbox.min.js"></script>
 
-    <!-- JavaScript to Load Images via GitHub API -->
+    <!-- JavaScript to Load Images from GitHub -->
     <script>
-        const GITHUB_USER = "Ge0rges";  // Replace with your GitHub username
-        const REPO_NAME = "ge0rges.github.com";  // Replace with your repository name
-        const BRANCH = "main"; // Change to "master" if using an older repo
-        const FOLDER_PATH = "assets/photos"; // Path to photos in the repository
+        const GITHUB_USER = "Ge0rges";
+        const REPO_NAME = "ge0rges.github.com";
+        const BRANCH = "main"; 
+        const FOLDER_PATH = "assets/photos"; 
 
         async function loadPhotos() {
             const gallery = document.getElementById('photo-gallery');
@@ -103,8 +149,6 @@
                 if (!response.ok) throw new Error("GitHub API request failed", response);
                 
                 const data = await response.json();
-
-                // Filter images only (JPG, PNG, GIF, WEBP)
                 const imageFiles = data.filter(file => /\.(jpg|jpeg|png|gif|webp)$/i.test(file.name));
 
                 if (imageFiles.length === 0) {
@@ -128,8 +172,16 @@
             }
         }
 
-        // Load photos when the page is loaded
         window.onload = loadPhotos;
+    </script>
+
+    <footer>
+        &copy; <span id="currentYear"></span> Georges Kanaan. All rights reserved.
+    </footer>
+
+    <!-- JavaScript to Update Current Year -->
+    <script>
+        document.getElementById('currentYear').textContent = new Date().getFullYear();
     </script>
 
 </body>
