@@ -1,0 +1,110 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Photography</title>
+
+    <!-- Google Fonts -->
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600&display=swap" rel="stylesheet">
+
+    <!-- Lightbox CSS -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/lightbox2/2.11.3/css/lightbox.min.css">
+
+    <!-- Custom CSS -->
+    <style>
+        :root {
+            --background-color: #000000;
+            --text-color: #E3F2FD; /* Ice White */
+            --highlight-color: #5DA9E9; /* Glacier Blue */
+            --border-color: #B0BEC5; /* Frost Gray */
+        }
+
+        body {
+            background-color: var(--background-color);
+            color: var(--text-color);
+            font-family: 'Inter', sans-serif;
+            text-align: center;
+            padding: 20px;
+        }
+
+        h1 {
+            color: var(--highlight-color);
+            margin-bottom: 20px;
+        }
+
+        .gallery {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            gap: 15px;
+            justify-content: center;
+            padding: 10px;
+            max-width: 1000px;
+            margin: auto;
+        }
+
+        .gallery a {
+            display: block;
+            border-radius: 8px;
+            overflow: hidden;
+            transition: transform 0.3s ease;
+        }
+
+        .gallery a:hover {
+            transform: scale(1.05);
+        }
+
+        .gallery img {
+            width: 100%;
+            height: auto;
+            display: block;
+            border-radius: 8px;
+            border: 2px solid var(--border-color);
+        }
+    </style>
+</head>
+<body>
+
+    <h1>Photos</h1>
+    
+    <div class="gallery" id="photo-gallery">
+        <!-- Images will be dynamically inserted here -->
+    </div>
+
+    <!-- Lightbox JS -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/lightbox2/2.11.3/js/lightbox.min.js"></script>
+
+    <!-- JavaScript to Load Images Dynamically -->
+    <script>
+        async function loadPhotos() {
+            const gallery = document.getElementById('photo-gallery');
+
+            try {
+                // Fetch the list of images from the server
+                const response = await fetch('assets/photos/');
+                const text = await response.text();
+
+                // Extract image filenames using regex (assumes Apache/Nginx directory listing)
+                const regex = /href="([^"]+\.(jpg|jpeg|png|gif|webp))"/gi;
+                let match;
+                while ((match = regex.exec(text)) !== null) {
+                    const imgSrc = `assets/photos/${match[1]}`;
+                    const imgElement = `
+                        <a href="${imgSrc}" data-lightbox="gallery">
+                            <img src="${imgSrc}" alt="Photo">
+                        </a>
+                    `;
+                    gallery.innerHTML += imgElement;
+                }
+            } catch (error) {
+                console.error("Error loading images:", error);
+                gallery.innerHTML = "<p>Could not load photos. Make sure directory listing is enabled.</p>";
+            }
+        }
+
+        // Load photos when the page is loaded
+        window.onload = loadPhotos;
+    </script>
+
+</body>
+</html>
