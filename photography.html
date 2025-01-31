@@ -17,7 +17,6 @@
             --background-color: #000000;
             --text-color: #E3F2FD; /* Ice White */
             --highlight-color: #5DA9E9; /* Glacier Blue */
-            --border-color: #B0BEC5; /* Frost Gray */
         }
 
         body {
@@ -59,14 +58,28 @@
             height: auto;
             display: block;
             border-radius: 8px;
-            border: 2px solid var(--border-color);
         }
     </style>
 </head>
 <body>
 
-    <h1>Photos</h1>
+    <h1><a href="#" id="back-link">Georges Kanaan</a></h1>
+
+    <script>
+        document.addEventListener("DOMContentLoaded", function () {
+            // Get the referring page
+            var referrer = document.referrer;
+            var link = document.getElementById("back-link");
     
+            // Check if the user came from index_fr.html
+            if (referrer.includes("index_fr.html")) {
+                link.href = "index_fr.html";
+            } else {
+                link.href = "index.html"; // Default to index.html
+            }
+        });
+    </script>
+
     <div class="gallery" id="photo-gallery">
         <!-- Images will be dynamically inserted here -->
     </div>
