@@ -166,7 +166,7 @@
                     const fullResImgSrc = `https://raw.githubusercontent.com/${GITHUB_USER}/${REPO_NAME}/${BRANCH}/${FOLDER_PATH}/${fileName}`;
 
                     const imgElement = `
-                        <a href="${fullResImgSrc}" data-toggle="lightbox">
+                        <a href="${fullResImgSrc}">
                             <img src="${compressedImgSrc}" alt="${fileName}">
                         </a>
                     `;
@@ -178,7 +178,7 @@
                 gallery.innerHTML = "<p>Could not load photos. Please check your GitHub repository settings.</p>";
             }
 
-            gallery.justifiedGallery();
+            $("#photo-gallery").justifiedGallery();
 
         }
 
