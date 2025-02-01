@@ -8,6 +8,8 @@ jobs:
     steps:
       - name: Checkout Repository
         uses: actions/checkout@v4
+        with:
+          persist-credentials: true # Ensures that GitHub Actions can push the changes
 
       - name: Compress Images
         uses: ClydeDz/compress-images@v1.0.0
@@ -17,3 +19,11 @@ jobs:
           jpg-compression-quality: 40
           png-compression-quality: 0.4
           gif-compression-quality: 4
+
+      - name: Commit and Push Changes
+        run: |
+          git config --global user.name "github-actions"
+          git config --global user.email "github-actions@github.com"
+          git add assets/compressed_photos
+          git commit -m "Compress images and save output"
+          git push
