@@ -1,15 +1,21 @@
 name: Compress Images
 
-on: [push]
+on:
+  push:
 
 jobs:
   compress-images:
     runs-on: ubuntu-latest
+    permissions:
+      # Give the default GITHUB_TOKEN write permission to commit and push the
+      # added or changed files to the repository.
+      contents: write
+      
     steps:
       - name: Checkout Repository
         uses: actions/checkout@v4
         with:
-          persist-credentials: true # Ensures that GitHub Actions can push the changes
+          persist-credentials: true  # Allows GitHub Actions to push changes back
 
       - name: Compress Images
         uses: ClydeDz/compress-images@v1.0.0
@@ -25,5 +31,10 @@ jobs:
           git config --global user.name "github-actions"
           git config --global user.email "github-actions@github.com"
           git add assets/compressed_photos
-          git commit -m "Compress images and save output"
-          git push
+          # Check if there are any changes to commit
+          if ! git diff-index --quiet HEAD; then
+            git commit -m "Compress images and save output"
+            git push
+          else
+            echo "No changes to commit."
+          fi
