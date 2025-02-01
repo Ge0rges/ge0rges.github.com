@@ -11,6 +11,12 @@
     rel="stylesheet"
   />
 
+  <!-- Lightbox2 CSS -->
+  <link
+    rel="stylesheet"
+    href="https://cdnjs.cloudflare.com/ajax/libs/lightbox2/2.11.3/css/lightbox.min.css"
+  />
+
   <!-- Custom CSS -->
   <style>
     :root {
@@ -65,26 +71,24 @@
 
     /* Masonry Layout */
     .gallery {
-      column-count: 4; /* Adjust the number of columns as needed */
+      column-count: 4; /* Adjust as needed for desktop */
       column-gap: 15px;
       max-width: 1400px;
       margin: 0 auto;
       padding: 10px;
     }
 
-    /* Responsive breakpoints for column layout */
+    /* Responsive breakpoints */
     @media (max-width: 1200px) {
       .gallery {
         column-count: 3;
       }
     }
-
     @media (max-width: 768px) {
       .gallery {
         column-count: 2;
       }
     }
-
     @media (max-width: 480px) {
       .gallery {
         column-count: 1;
@@ -126,69 +130,6 @@
     a:hover {
       color: var(--link-hover-color);
     }
-
-    /* Lightbox (Modal) Styling */
-    .lightbox-modal {
-      display: none; /* Hidden by default */
-      position: fixed;
-      z-index: 9999;
-      left: 0;
-      top: 0;
-      width: 100%;
-      height: 100%;
-      overflow: auto;
-      background-color: rgba(0, 0, 0, 0.9);
-      align-items: center;
-      justify-content: center;
-    }
-
-    .lightbox-content {
-      margin: auto;
-      max-width: 90%;
-      max-height: 80vh;
-      display: block;
-      object-fit: contain;
-      border-radius: 4px;
-    }
-
-    .lightbox-close,
-    .lightbox-prev,
-    .lightbox-next {
-      color: #fff;
-      position: absolute;
-      top: 50%;
-      font-size: 2rem;
-      transform: translateY(-50%);
-      cursor: pointer;
-      padding: 0 12px;
-      user-select: none;
-    }
-
-    .lightbox-close {
-      top: 40px;
-      right: 40px;
-      transform: none;
-      font-size: 3rem;
-    }
-
-    .lightbox-prev {
-      left: 40px;
-    }
-
-    .lightbox-next {
-      right: 40px;
-    }
-
-    .lightbox-caption {
-      text-align: center;
-      color: #ccc;
-      font-size: 0.9rem;
-      margin-top: 10px;
-    }
-
-    .lightbox-modal.show {
-      display: flex;
-    }
   </style>
 </head>
 <body>
@@ -197,6 +138,7 @@
   </div>
 
   <script>
+    // Determine if user should go back to English or French index
     document.addEventListener("DOMContentLoaded", function () {
       var referrer = document.referrer;
       var link = document.getElementById("back-link");
@@ -213,25 +155,18 @@
     <!-- Images will be dynamically inserted here -->
   </div>
 
-  <!-- Lightbox Modal -->
-  <div id="lightboxModal" class="lightbox-modal">
-    <span id="lightboxClose" class="lightbox-close">&times;</span>
-    <img id="lightboxImg" class="lightbox-content" />
-    <a id="lightboxPrev" class="lightbox-prev">&#10094;</a>
-    <a id="lightboxNext" class="lightbox-next">&#10095;</a>
-    <div id="lightboxCaption" class="lightbox-caption"></div>
-  </div>
+  <!-- Lightbox2 JS -->
+  <script
+    src="https://cdnjs.cloudflare.com/ajax/libs/lightbox2/2.11.3/js/lightbox.min.js"
+  ></script>
 
-  <!-- JavaScript to Load Images from GitHub and Handle Lightbox -->
+  <!-- JavaScript to Load Images from GitHub -->
   <script>
     const GITHUB_USER = "Ge0rges";
     const REPO_NAME = "ge0rges.github.com";
     const BRANCH = "main";
     const FOLDER_PATH = "assets/photos"; 
     const COMPRESSED_FOLDER_PATH = "assets/compressed_photos";
-
-    // Will hold array of { fullRes, thumb, alt } for lightbox usage
-    let imagesData = [];
 
     async function loadPhotos() {
       const gallery = document.getElementById("photo-gallery");
@@ -252,91 +187,29 @@
         }
 
         let htmlContent = "";
-        imageFiles.forEach((file, index) => {
+        imageFiles.forEach((file) => {
           const fileName = file.name;
-          // Construct direct RAW URLs
+          // Direct RAW URL for thumbnail
           const compressedImgSrc = `https://raw.githubusercontent.com/${GITHUB_USER}/${REPO_NAME}/${BRANCH}/${COMPRESSED_FOLDER_PATH}/${fileName}`;
+          // Direct RAW URL for full resolution
           const fullResImgSrc = `https://raw.githubusercontent.com/${GITHUB_USER}/${REPO_NAME}/${BRANCH}/${FOLDER_PATH}/${fileName}`;
 
-          // Push into imagesData array for lightbox reference
-          imagesData.push({
-            thumb: compressedImgSrc,
-            fullRes: fullResImgSrc,
-            alt: fileName,
-          });
-
-          // Build the thumbnail anchor
+          // 'data-lightbox="mygallery"' groups them in one lightbox
+          // 'data-title' will show as caption inside Lightbox
           htmlContent += `
-            <a data-index="${index}">
+            <a href="${fullResImgSrc}" data-lightbox="mygallery" data-title="${fileName}">
               <img src="${compressedImgSrc}" alt="${fileName}" />
             </a>
           `;
         });
 
         gallery.innerHTML = htmlContent;
-
-        // Attach click event to each anchor
-        document.querySelectorAll(".gallery a").forEach((anchor) => {
-          anchor.addEventListener("click", (e) => {
-            e.preventDefault();
-            const index = parseInt(anchor.getAttribute("data-index"));
-            openLightbox(index);
-          });
-        });
       } catch (error) {
         console.error("Error loading images:", error);
         gallery.innerHTML =
           "<p>Could not load photos. Please check your GitHub repository settings.</p>";
       }
     }
-
-    // Lightbox functionality
-    const lightboxModal = document.getElementById("lightboxModal");
-    const lightboxImg = document.getElementById("lightboxImg");
-    const lightboxCaption = document.getElementById("lightboxCaption");
-    const lightboxClose = document.getElementById("lightboxClose");
-    const lightboxPrev = document.getElementById("lightboxPrev");
-    const lightboxNext = document.getElementById("lightboxNext");
-
-    let currentIndex = 0;
-
-    function openLightbox(index) {
-      currentIndex = index;
-      updateLightbox();
-      lightboxModal.classList.add("show");
-    }
-
-    function closeLightbox() {
-      lightboxModal.classList.remove("show");
-    }
-
-    function updateLightbox() {
-      const { fullRes, alt } = imagesData[currentIndex];
-      lightboxImg.src = fullRes;
-      lightboxCaption.textContent = alt;
-    }
-
-    function showNext() {
-      currentIndex = (currentIndex + 1) % imagesData.length;
-      updateLightbox();
-    }
-
-    function showPrev() {
-      currentIndex = (currentIndex - 1 + imagesData.length) % imagesData.length;
-      updateLightbox();
-    }
-
-    // Event listeners for lightbox
-    lightboxClose.addEventListener("click", closeLightbox);
-    lightboxPrev.addEventListener("click", showPrev);
-    lightboxNext.addEventListener("click", showNext);
-
-    // Close lightbox on outside click
-    window.addEventListener("click", (e) => {
-      if (e.target === lightboxModal) {
-        closeLightbox();
-      }
-    });
 
     window.onload = loadPhotos;
   </script>
