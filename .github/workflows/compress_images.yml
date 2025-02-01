@@ -20,6 +20,7 @@ jobs:
           png-compression-quality: 0.4
           gif-compression-quality: 4
 
+      - uses: actions/checkout@v3
       - name: Commit and Push Changes
         run: |
           git config --global user.name "github-actions"
