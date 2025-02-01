@@ -1,198 +1,353 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Georges Kanaan - Photography</title>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Georges Kanaan - Photography</title>
 
-    <!-- Google Fonts -->
-    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600&display=swap" rel="stylesheet">
+  <!-- Google Fonts -->
+  <link
+    href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600&display=swap"
+    rel="stylesheet"
+  />
 
-    <!-- Custom CSS -->
-    <style>
-        :root {
-            --background-color: #000000;
-            --text-color: #E3F2FD; /* Ice White */
-            --highlight-color: #5DA9E9; /* Glacier Blue */
-            --hover-color: #76C7C0; /* Iceberg Teal */
-            --link-color: #A1E3FF; /* Arctic Cyan */
-            --link-hover-color: #1E6091; /* Frozen Sapphire */
-            --border-color: #B0BEC5; /* Frost Gray */
-            --font-primary: 'Inter', sans-serif;
-        }
+  <!-- Custom CSS -->
+  <style>
+    :root {
+      --background-color: #000000;
+      --text-color: #E3F2FD; /* Ice White */
+      --highlight-color: #5DA9E9; /* Glacier Blue */
+      --hover-color: #76C7C0; /* Iceberg Teal */
+      --link-color: #A1E3FF; /* Arctic Cyan */
+      --link-hover-color: #1E6091; /* Frozen Sapphire */
+      --border-color: #B0BEC5; /* Frost Gray */
+      --font-primary: 'Inter', sans-serif;
+    }
 
-        * {
-            margin: 0;
-            padding: 0;
-            box-sizing: border-box;
-        }
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
 
-        body {
-            background-color: var(--background-color);
-            color: var(--text-color);
-            font-family: var(--font-primary);
-            text-align: center;
-            padding: 20px;
-        }
+    body {
+      background-color: var(--background-color);
+      color: var(--text-color);
+      font-family: var(--font-primary);
+      text-align: center;
+      padding: 20px;
+    }
 
-        header {
-            display: flex;
-            justify-content: flex-end;
-            align-items: center;
-            margin-bottom: 40px;
-        }
+    header {
+      display: flex;
+      justify-content: flex-end;
+      align-items: center;
+      margin-bottom: 40px;
+    }
 
-        .title-section {
-            text-align: center;
-            margin-bottom: 20px;
-        }
+    .title-section {
+      text-align: center;
+      margin-bottom: 20px;
+    }
 
-        .title-section h1 {
-            font-size: 2.5rem;
-            margin-bottom: 10px;
-            font-weight: 600;
-            color: var(--highlight-color);
-        }
+    .title-section h1 {
+      font-size: 2.5rem;
+      margin-bottom: 10px;
+      font-weight: 600;
+      color: var(--highlight-color);
+    }
 
-        .title-section h2 {
-            font-size: 1.5rem;
-            font-weight: 300;
-            color: var(--highlight-color);
-        }
+    .title-section h2 {
+      font-size: 1.5rem;
+      font-weight: 300;
+      color: var(--highlight-color);
+    }
 
-        .gallery {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
-            gap: 15px;
-            justify-content: center;
-            padding: 10px;
-            max-width: 1000px;
-            margin: auto;
-        }
+    /* Masonry Layout */
+    .gallery {
+      column-count: 4; /* Adjust the number of columns as needed */
+      column-gap: 15px;
+      max-width: 1400px;
+      margin: 0 auto;
+      padding: 10px;
+    }
 
-        .gallery a {
-            display: block;
-            overflow: hidden;
-            transition: transform 0.3s ease;
-        }
+    /* Responsive breakpoints for column layout */
+    @media (max-width: 1200px) {
+      .gallery {
+        column-count: 3;
+      }
+    }
 
-        .gallery a:hover {
-            transform: scale(1.05);
-        }
+    @media (max-width: 768px) {
+      .gallery {
+        column-count: 2;
+      }
+    }
 
-        .gallery img {
-            width: 100%;
-            height: auto;
-            display: block;
-        }
+    @media (max-width: 480px) {
+      .gallery {
+        column-count: 1;
+      }
+    }
 
-        footer {
-            text-align: center;
-            padding: 20px 0;
-            border-top: 1px solid var(--border-color);
-            font-size: 0.9rem;
-            color: rgba(255, 255, 255, 0.8);
-        }
+    .gallery a {
+      display: inline-block;
+      width: 100%;
+      margin-bottom: 15px;
+      cursor: pointer;
+      transition: transform 0.3s ease;
+    }
 
-        a {
-            color: var(--link-color);
-            text-decoration: none;
-        }
+    .gallery a:hover {
+      transform: scale(1.02);
+    }
 
-        a:hover {
-            color: var(--link-hover-color);
-        }
-    </style>
+    .gallery img {
+      width: 100%;
+      height: auto;
+      display: block;
+      border-radius: 4px;
+    }
+
+    footer {
+      text-align: center;
+      padding: 20px 0;
+      border-top: 1px solid var(--border-color);
+      font-size: 0.9rem;
+      color: rgba(255, 255, 255, 0.8);
+    }
+
+    a {
+      color: var(--link-color);
+      text-decoration: none;
+    }
+
+    a:hover {
+      color: var(--link-hover-color);
+    }
+
+    /* Lightbox (Modal) Styling */
+    .lightbox-modal {
+      display: none; /* Hidden by default */
+      position: fixed;
+      z-index: 9999;
+      left: 0;
+      top: 0;
+      width: 100%;
+      height: 100%;
+      overflow: auto;
+      background-color: rgba(0, 0, 0, 0.9);
+      align-items: center;
+      justify-content: center;
+    }
+
+    .lightbox-content {
+      margin: auto;
+      max-width: 90%;
+      max-height: 80vh;
+      display: block;
+      object-fit: contain;
+      border-radius: 4px;
+    }
+
+    .lightbox-close,
+    .lightbox-prev,
+    .lightbox-next {
+      color: #fff;
+      position: absolute;
+      top: 50%;
+      font-size: 2rem;
+      transform: translateY(-50%);
+      cursor: pointer;
+      padding: 0 12px;
+      user-select: none;
+    }
+
+    .lightbox-close {
+      top: 40px;
+      right: 40px;
+      transform: none;
+      font-size: 3rem;
+    }
+
+    .lightbox-prev {
+      left: 40px;
+    }
+
+    .lightbox-next {
+      right: 40px;
+    }
+
+    .lightbox-caption {
+      text-align: center;
+      color: #ccc;
+      font-size: 0.9rem;
+      margin-top: 10px;
+    }
+
+    .lightbox-modal.show {
+      display: flex;
+    }
+  </style>
 </head>
 <body>
+  <div class="title-section">
+    <h1><a href="#" id="back-link">Georges Kanaan</a></h1>
+  </div>
 
-    <div class="title-section">
-        <h1><a href="#" id="back-link">Georges Kanaan</a></h1>
-    </div>
+  <script>
+    document.addEventListener("DOMContentLoaded", function () {
+      var referrer = document.referrer;
+      var link = document.getElementById("back-link");
 
-    <script>
-        document.addEventListener("DOMContentLoaded", function () {
-            var referrer = document.referrer;
-            var link = document.getElementById("back-link");
+      if (referrer.includes("index_fr.html")) {
+        link.href = "index_fr.html";
+      } else {
+        link.href = "index.html";
+      }
+    });
+  </script>
 
-            if (referrer.includes("index_fr.html")) {
-                link.href = "index_fr.html";
-            } else {
-                link.href = "index.html";
-            }
-        });
-    </script>
+  <div class="gallery" id="photo-gallery">
+    <!-- Images will be dynamically inserted here -->
+  </div>
 
-    <div class="gallery" id="photo-gallery">
-        <!-- Images will be dynamically inserted here -->
-    </div>
+  <!-- Lightbox Modal -->
+  <div id="lightboxModal" class="lightbox-modal">
+    <span id="lightboxClose" class="lightbox-close">&times;</span>
+    <img id="lightboxImg" class="lightbox-content" />
+    <a id="lightboxPrev" class="lightbox-prev">&#10094;</a>
+    <a id="lightboxNext" class="lightbox-next">&#10095;</a>
+    <div id="lightboxCaption" class="lightbox-caption"></div>
+  </div>
 
-    <!-- Lightbox  -->
-    <link rel="stylesheet" href="https://raw.githubusercontent.com/miromannino/Justified-Gallery/refs/heads/master/dist/css/justifiedGallery.css" />
-    <script src="https://raw.githubusercontent.com/miromannino/Justified-Gallery/refs/heads/master/dist/js/jquery.justifiedGallery.js"></script>
+  <!-- JavaScript to Load Images from GitHub and Handle Lightbox -->
+  <script>
+    const GITHUB_USER = "Ge0rges";
+    const REPO_NAME = "ge0rges.github.com";
+    const BRANCH = "main";
+    const FOLDER_PATH = "assets/photos"; 
+    const COMPRESSED_FOLDER_PATH = "assets/compressed_photos";
 
-    <!-- JavaScript to Load Images from GitHub -->
-    <script>
-        const GITHUB_USER = "Ge0rges";
-        const REPO_NAME = "ge0rges.github.com";
-        const BRANCH = "main"; 
-        const FOLDER_PATH = "assets/photos"; 
-        const COMPRESSED_FOLDER_PATH = "assets/compressed_photos"; 
+    // Will hold array of { fullRes, thumb, alt } for lightbox usage
+    let imagesData = [];
 
-        async function loadPhotos() {
-            const gallery = document.getElementById('photo-gallery');
-            const compressedApiUrl = `https://api.github.com/repos/${GITHUB_USER}/${REPO_NAME}/contents/${COMPRESSED_FOLDER_PATH}?ref=${BRANCH}`;
+    async function loadPhotos() {
+      const gallery = document.getElementById("photo-gallery");
+      const compressedApiUrl = `https://api.github.com/repos/${GITHUB_USER}/${REPO_NAME}/contents/${COMPRESSED_FOLDER_PATH}?ref=${BRANCH}`;
 
-            try {
-                const response = await fetch(compressedApiUrl);
-                if (!response.ok) throw new Error("GitHub API request failed");
+      try {
+        const response = await fetch(compressedApiUrl);
+        if (!response.ok) throw new Error("GitHub API request failed");
 
-                const data = await response.json();
-                const imageFiles = data.filter(file => /\.(jpg|jpeg|png|gif|webp)$/i.test(file.name));
+        const data = await response.json();
+        const imageFiles = data.filter((file) =>
+          /\.(jpg|jpeg|png|gif|webp)$/i.test(file.name)
+        );
 
-                if (imageFiles.length === 0) {
-                    gallery.innerHTML = "<p>No images found.</p>";
-                    return;
-                }
-
-                imageFiles.forEach(file => {
-                    // Instead of using file.download_url, construct a direct RAW URL:
-                    const fileName = file.name;
-                    
-                    // Thumbnail (compressed) image:
-                    const compressedImgSrc = `https://raw.githubusercontent.com/${GITHUB_USER}/${REPO_NAME}/${BRANCH}/${COMPRESSED_FOLDER_PATH}/${fileName}`;
-                    
-                    // Full-resolution image:
-                    const fullResImgSrc = `https://raw.githubusercontent.com/${GITHUB_USER}/${REPO_NAME}/${BRANCH}/${FOLDER_PATH}/${fileName}`;
-
-                    const imgElement = `
-                        <a href="${fullResImgSrc}">
-                            <img src="${compressedImgSrc}" alt="${fileName}">
-                        </a>
-                    `;
-                    gallery.innerHTML += imgElement;
-                });
-
-            } catch (error) {
-                console.error("Error loading images:", error);
-                gallery.innerHTML = "<p>Could not load photos. Please check your GitHub repository settings.</p>";
-            }
-
-            $("#photo-gallery").justifiedGallery();
-
+        if (imageFiles.length === 0) {
+          gallery.innerHTML = "<p>No images found.</p>";
+          return;
         }
 
-        window.onload = loadPhotos;
-    </script>
+        let htmlContent = "";
+        imageFiles.forEach((file, index) => {
+          const fileName = file.name;
+          // Construct direct RAW URLs
+          const compressedImgSrc = `https://raw.githubusercontent.com/${GITHUB_USER}/${REPO_NAME}/${BRANCH}/${COMPRESSED_FOLDER_PATH}/${fileName}`;
+          const fullResImgSrc = `https://raw.githubusercontent.com/${GITHUB_USER}/${REPO_NAME}/${BRANCH}/${FOLDER_PATH}/${fileName}`;
 
-    <footer>
-        &copy; <span id="currentYear"></span> Georges Kanaan. All rights reserved.
-    </footer>
+          // Push into imagesData array for lightbox reference
+          imagesData.push({
+            thumb: compressedImgSrc,
+            fullRes: fullResImgSrc,
+            alt: fileName,
+          });
 
-    <!-- JavaScript to Update Current Year -->
-    <script>
-        document.getElementById('currentYear').textContent = new Date().getFullYear();
-    </script>
+          // Build the thumbnail anchor
+          htmlContent += `
+            <a data-index="${index}">
+              <img src="${compressedImgSrc}" alt="${fileName}" />
+            </a>
+          `;
+        });
 
+        gallery.innerHTML = htmlContent;
+
+        // Attach click event to each anchor
+        document.querySelectorAll(".gallery a").forEach((anchor) => {
+          anchor.addEventListener("click", (e) => {
+            e.preventDefault();
+            const index = parseInt(anchor.getAttribute("data-index"));
+            openLightbox(index);
+          });
+        });
+      } catch (error) {
+        console.error("Error loading images:", error);
+        gallery.innerHTML =
+          "<p>Could not load photos. Please check your GitHub repository settings.</p>";
+      }
+    }
+
+    // Lightbox functionality
+    const lightboxModal = document.getElementById("lightboxModal");
+    const lightboxImg = document.getElementById("lightboxImg");
+    const lightboxCaption = document.getElementById("lightboxCaption");
+    const lightboxClose = document.getElementById("lightboxClose");
+    const lightboxPrev = document.getElementById("lightboxPrev");
+    const lightboxNext = document.getElementById("lightboxNext");
+
+    let currentIndex = 0;
+
+    function openLightbox(index) {
+      currentIndex = index;
+      updateLightbox();
+      lightboxModal.classList.add("show");
+    }
+
+    function closeLightbox() {
+      lightboxModal.classList.remove("show");
+    }
+
+    function updateLightbox() {
+      const { fullRes, alt } = imagesData[currentIndex];
+      lightboxImg.src = fullRes;
+      lightboxCaption.textContent = alt;
+    }
+
+    function showNext() {
+      currentIndex = (currentIndex + 1) % imagesData.length;
+      updateLightbox();
+    }
+
+    function showPrev() {
+      currentIndex = (currentIndex - 1 + imagesData.length) % imagesData.length;
+      updateLightbox();
+    }
+
+    // Event listeners for lightbox
+    lightboxClose.addEventListener("click", closeLightbox);
+    lightboxPrev.addEventListener("click", showPrev);
+    lightboxNext.addEventListener("click", showNext);
+
+    // Close lightbox on outside click
+    window.addEventListener("click", (e) => {
+      if (e.target === lightboxModal) {
+        closeLightbox();
+      }
+    });
+
+    window.onload = loadPhotos;
+  </script>
+
+  <footer>
+    &copy; <span id="currentYear"></span> Georges Kanaan. All rights reserved.
+  </footer>
+
+  <!-- JavaScript to Update Current Year -->
+  <script>
+    document.getElementById("currentYear").textContent = new Date().getFullYear();
+  </script>
 </body>
 </html>
