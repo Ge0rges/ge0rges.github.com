@@ -1,10 +1,19 @@
-  name: Compress Images
-  on: [push]
-  uses: ClydeDz/compress-images@v1.0.0
-  with:
-    input-directory: assets/photos
-    output-directory: assets/compressed_photos
-    jpg-compression-quality: 40
-    png-compression-quality: 0.4
-    gif-compression-quality: 4
-          
+name: Compress Images
+
+on: [push]
+
+jobs:
+  compress-images:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout Repository
+        uses: actions/checkout@v4
+
+      - name: Compress Images
+        uses: ClydeDz/compress-images@v1.0.0
+        with:
+          input-directory: assets/photos
+          output-directory: assets/compressed_photos
+          jpg-compression-quality: 40
+          png-compression-quality: 0.4
+          gif-compression-quality: 4
