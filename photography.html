@@ -168,7 +168,9 @@
                     const fullResImgSrc = `https://raw.githubusercontent.com/${GITHUB_USER}/${REPO_NAME}/${BRANCH}/${FOLDER_PATH}/${fileName}`;
 
                     const imgElement = `
-                        <a href="${fullResImgSrc}" data-lightbox="gallery">Image #1</a>
+                        <a href="${fullResImgSrc}" data-lightbox="gallery">
+                            <img src="${compressedImgSrc}" alt="${fileName}">
+                        </a>
                     `;
                     gallery.innerHTML += imgElement;
                 });
