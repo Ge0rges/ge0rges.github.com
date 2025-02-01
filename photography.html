@@ -158,12 +158,18 @@
                 }
 
                 imageFiles.forEach(file => {
-                    const compressedImgSrc = file.download_url;
-                    const fullResImgSrc = compressedImgSrc.replace(COMPRESSED_FOLDER_PATH, FOLDER_PATH); // Match full-res path
+                    // Instead of using file.download_url, construct a direct RAW URL:
+                    const fileName = file.name;
                     
+                    // Thumbnail (compressed) image:
+                    const compressedImgSrc = `https://raw.githubusercontent.com/${GITHUB_USER}/${REPO_NAME}/${BRANCH}/${COMPRESSED_FOLDER_PATH}/${fileName}`;
+                    
+                    // Full-resolution image:
+                    const fullResImgSrc = `https://raw.githubusercontent.com/${GITHUB_USER}/${REPO_NAME}/${BRANCH}/${FOLDER_PATH}/${fileName}`;
+
                     const imgElement = `
                         <a href="${fullResImgSrc}" data-lightbox="gallery">
-                            <img src="${compressedImgSrc}" alt="${file.name}">
+                            <img src="${compressedImgSrc}" alt="${fileName}">
                         </a>
                     `;
                     gallery.innerHTML += imgElement;
@@ -176,7 +182,6 @@
         }
 
         window.onload = loadPhotos;
-
     </script>
 
     <footer>
