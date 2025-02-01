@@ -139,15 +139,16 @@
         const REPO_NAME = "ge0rges.github.com";
         const BRANCH = "main"; 
         const FOLDER_PATH = "assets/photos"; 
+        const COMPRESSED_FOLDER_PATH = "assets/compressed_photos"; 
 
         async function loadPhotos() {
             const gallery = document.getElementById('photo-gallery');
-            const apiUrl = `https://api.github.com/repos/${GITHUB_USER}/${REPO_NAME}/contents/${FOLDER_PATH}?ref=${BRANCH}`;
+            const compressedApiUrl = `https://api.github.com/repos/${GITHUB_USER}/${REPO_NAME}/contents/${COMPRESSED_FOLDER_PATH}?ref=${BRANCH}`;
 
             try {
-                const response = await fetch(apiUrl);
-                if (!response.ok) throw new Error("GitHub API request failed", response);
-                
+                const response = await fetch(compressedApiUrl);
+                if (!response.ok) throw new Error("GitHub API request failed");
+
                 const data = await response.json();
                 const imageFiles = data.filter(file => /\.(jpg|jpeg|png|gif|webp)$/i.test(file.name));
 
@@ -157,10 +158,12 @@
                 }
 
                 imageFiles.forEach(file => {
-                    const imgSrc = file.download_url;
+                    const compressedImgSrc = file.download_url;
+                    const fullResImgSrc = compressedImgSrc.replace(COMPRESSED_FOLDER_PATH, FOLDER_PATH); // Match full-res path
+                    
                     const imgElement = `
-                        <a href="${imgSrc}" data-lightbox="gallery">
-                            <img src="${imgSrc}" alt="${file.name}">
+                        <a href="${fullResImgSrc}" data-lightbox="gallery">
+                            <img src="${compressedImgSrc}" alt="${file.name}">
                         </a>
                     `;
                     gallery.innerHTML += imgElement;
@@ -173,6 +176,7 @@
         }
 
         window.onload = loadPhotos;
+
     </script>
 
     <footer>
