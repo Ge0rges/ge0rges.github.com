@@ -17,6 +17,11 @@ jobs:
         with:
           persist-credentials: true  # Allows GitHub Actions to push changes back
 
+      - name: Scrub Metadata
+        run: |
+          sudo apt install libimage-exiftool-perl -y
+          exiftool -all= -r -overwrite_original -ext jpg -ext jpeg -ext png assets/photos
+        
       - name: Compress Images
         uses: ClydeDz/compress-images@v1.0.0
         with:
