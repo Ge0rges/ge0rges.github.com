@@ -1,6 +1,7 @@
 name: Compress Images
 
-on: [push]
+on:
+  push:
 
 jobs:
   compress-images:
@@ -9,7 +10,7 @@ jobs:
       - name: Checkout Repository
         uses: actions/checkout@v4
         with:
-          persist-credentials: true # Ensures that GitHub Actions can push the changes
+          persist-credentials: true  # Allows GitHub Actions to push changes back
 
       - name: Compress Images
         uses: ClydeDz/compress-images@v1.0.0
@@ -20,11 +21,15 @@ jobs:
           png-compression-quality: 0.4
           gif-compression-quality: 4
 
-      - uses: actions/checkout@v3
       - name: Commit and Push Changes
         run: |
           git config --global user.name "github-actions"
           git config --global user.email "github-actions@github.com"
           git add assets/compressed_photos
-          git commit -m "Compress images and save output"
-          git push
+          # Check if there are any changes to commit
+          if ! git diff-index --quiet HEAD; then
+            git commit -m "Compress images and save output"
+            git push
+          else
+            echo "No changes to commit."
+          fi
