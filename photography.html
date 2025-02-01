@@ -127,8 +127,9 @@
         <!-- Images will be dynamically inserted here -->
     </div>
 
-    <!-- Lightbox JS -->
-    <script src="https://cdn.jsdelivr.net/npm/bs5-lightbox@1.8.3/dist/index.bundle.min.js"></script>
+    <!-- Lightbox  -->
+    <link rel="stylesheet" href="css/justifiedGallery.css" />
+    <script src="js/jquery.justifiedGallery.js"></script>
 
     <!-- JavaScript to Load Images from GitHub -->
     <script>
@@ -176,6 +177,9 @@
                 console.error("Error loading images:", error);
                 gallery.innerHTML = "<p>Could not load photos. Please check your GitHub repository settings.</p>";
             }
+
+            gallery.justifiedGallery();
+
         }
 
         window.onload = loadPhotos;
