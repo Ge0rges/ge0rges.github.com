@@ -8,9 +8,6 @@
     <!-- Google Fonts -->
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600&display=swap" rel="stylesheet">
 
-    <!-- Lightbox CSS -->
-    <link href="https://cdnjs.cloudflare.com/ajax/libs/lightbox2/2.11.5/css/lightbox.css" rel="stylesheet">
-
     <!-- Custom CSS -->
     <style>
         :root {
@@ -131,7 +128,7 @@
     </div>
 
     <!-- Lightbox JS -->
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/lightbox2/2.11.5/js/lightbox-plus-jquery.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/bs5-lightbox@1.8.3/dist/index.bundle.min.js"></script>
 
     <!-- JavaScript to Load Images from GitHub -->
     <script>
@@ -168,7 +165,7 @@
                     const fullResImgSrc = `https://raw.githubusercontent.com/${GITHUB_USER}/${REPO_NAME}/${BRANCH}/${FOLDER_PATH}/${fileName}`;
 
                     const imgElement = `
-                        <a href="${fullResImgSrc}" data-lightbox="gallery">
+                        <a href="${fullResImgSrc}" data-toggle="lightbox">
                             <img src="${compressedImgSrc}" alt="${fileName}">
                         </a>
                     `;
