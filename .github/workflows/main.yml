@@ -1,4 +1,4 @@
-            - name: Compress Images
+  name: Compress Images
   uses: ClydeDz/compress-images@v1.0.0
   with:
     input-directory: assets/photos
