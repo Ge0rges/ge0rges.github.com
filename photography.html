@@ -105,6 +105,7 @@
 
     .gallery a:hover {
       transform: scale(1.02);
+      border-radius: 4px;
     }
 
     .gallery img {
@@ -157,7 +158,7 @@
 
   <!-- Lightbox2 JS -->
   <script
-    src="https://cdnjs.cloudflare.com/ajax/libs/lightbox2/2.11.3/js/lightbox.min.js"
+    src="https://cdnjs.cloudflare.com/ajax/libs/lightbox2/2.11.5/js/lightbox-plus-jquery.js"
   ></script>
 
   <!-- JavaScript to Load Images from GitHub -->
@@ -197,7 +198,7 @@
           // 'data-lightbox="mygallery"' groups them in one lightbox
           // 'data-title' will show as caption inside Lightbox
           htmlContent += `
-            <a href="${fullResImgSrc}" data-lightbox="mygallery" data-title="${fileName}">
+            <a href="${fullResImgSrc}" data-lightbox="mygallery">
               <img src="${compressedImgSrc}" alt="${fileName}" />
             </a>
           `;
