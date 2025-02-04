@@ -101,19 +101,27 @@
       margin-bottom: 15px;
       cursor: pointer;
       transition: transform 0.3s ease;
-      border-radius: 4px;
     }
 
     .gallery a:hover {
       transform: scale(1.02);
-      border-radius: 4px;
     }
 
     .gallery img {
       width: 100%;
       height: auto;
       display: block;
-      border-radius: 4px;
+    }
+
+    /* Override Lightbox2 border and box-shadow for the zoomed image */
+    .lb-outerContainer {
+      border: none !important;
+      box-shadow: none !important;
+    }
+
+    .lb-image {
+      border: none !important;
+      box-shadow: none !important;
     }
 
     footer {
