@@ -1,328 +1,393 @@
-<!DOCTYPE html>
+<!doctype html>
 <html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Georges Kanaan</title>
-    
+
     <!-- Google Fonts -->
-    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600&display=swap" rel="stylesheet">
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.2/css/all.min.css">
+    <link
+      href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600&display=swap"
+      rel="stylesheet"
+    />
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.2/css/all.min.css"
+    />
 
     <!-- CSS -->
     <style>
-        :root {
-    /* Background remains black */
-    --background-color: #000000; /* Black */
-    --text-color: #E3F2FD; /* Ice White */
-    --highlight-color: #5DA9E9; /* Glacier Blue */
-    --hover-color: #76C7C0; /* Iceberg Teal */
-    --link-color: #A1E3FF; /* Arctic Cyan */
-    --link-hover-color: #1E6091; /* Frozen Sapphire */
-    --border-color: #B0BEC5; /* Frost Gray */
+      :root {
+        /* Background remains black */
+        --background-color: #000000; /* Black */
+        --text-color: #e3f2fd; /* Ice White */
+        --highlight-color: #5da9e9; /* Glacier Blue */
+        --hover-color: #76c7c0; /* Iceberg Teal */
+        --link-color: #a1e3ff; /* Arctic Cyan */
+        --link-hover-color: #1e6091; /* Frozen Sapphire */
+        --border-color: #b0bec5; /* Frost Gray */
 
-    
-    /* Typography */
-    --font-primary: 'Inter', sans-serif;
-    
-    /* Logo */
-    --logo-size: 24px;
-}
+        /* Typography */
+        --font-primary: "Inter", sans-serif;
 
-* {
-    margin: 0;
-    padding: 0;
-    box-sizing: border-box;
-}
+        /* Logo */
+        --logo-size: 24px;
+      }
 
-body {
-    background-color: var(--background-color);
-    color: var(--text-color);
-    font-family: var(--font-primary);
-    line-height: 1.6;
-    padding: 20px;
-}
+      * {
+        margin: 0;
+        padding: 0;
+        box-sizing: border-box;
+      }
 
-header {
-    display: flex;
-    justify-content: flex-end;
-    align-items: center;
-    margin-bottom: 40px;
-}
+      body {
+        background-color: var(--background-color);
+        color: var(--text-color);
+        font-family: var(--font-primary);
+        line-height: 1.6;
+        padding: 20px;
+      }
 
-.language-switcher a {
-    color: var(--text-color);
-    text-decoration: none;
-    font-weight: 600;
-    padding: 8px 16px;
-    transition: color 0.3s, background-color 0.3s;
-    border: 2px solid var(--highlight-color);
-    border-radius: 4px;
-}
-
-.language-switcher a:hover {
-    background-color: var(--highlight-color);
-    color: var(--background-color);
-}
-
-.title-section {
-    text-align: center;
-    margin-bottom: 20px;
-}
-
-.title-section h1 {
-    font-size: 2.5rem;
-    margin-bottom: 10px;
-    font-weight: 600;
-}
-
-.title-section h2 {
-    font-size: 1.5rem;
-    font-weight: 300;
-    color: var(--highlight-color);
-}
-
-nav {
-    display: flex;
-    justify-content: center;
-    flex-wrap: wrap;
-    gap: 15px;
-    margin-bottom: 40px;
-}
-
-nav a {
-    color: var(--text-color);
-    text-decoration: none;
-    padding: 10px 15px;
-    transition: color 0.3s, background-color 0.3s;
-    font-weight: 500;
-    display: flex;
-    align-items: center;
-    gap: 8px;
-    border-radius: 4px;
-}
-
-nav a:hover {
-    color: var(--background-color);
-    background-color: var(--hover-color);
-    border-radius: 4px;
-}
-
-a {
-    color: var(--link-color);
-    text-decoration: none;
-}
-
-a:hover {
-    color: var(--link-hover-color);
-}
-
-main {
-    max-width: 800px;
-    margin: 0 auto;
-}
-
-section {
-    margin-bottom: 40px;
-}
-
-section h3 {
-    font-size: 1.75rem;
-    margin-bottom: 20px;
-    color: var(--highlight-color);
-}
-
-ul.publications {
-    list-style-type: none;
-}
-
-ul.publications li {
-    margin-bottom: 15px;
-}
-
-ul.publications li strong {
-    color: var(--highlight-color);
-}
-
-footer {
-    text-align: center;
-    padding: 20px 0;
-    border-top: 1px solid var(--border-color);
-    font-size: 0.9rem;
-    color: rgba(255, 255, 255, 0.8);
-}
-
-/* Responsive Design */
-@media (max-width: 600px) {
-    .title-section h1 {
-        font-size: 2rem;
-    }
-
-    .title-section h2 {
-        font-size: 1.25rem;
-    }
-
-    nav {
-        flex-direction: column;
-        align-items: center;
-    }
-
-    .language-switcher {
-        width: 100%;
+      header {
         display: flex;
         justify-content: flex-end;
-    }
-}
+        align-items: center;
+        margin-bottom: 40px;
+      }
 
-/* Profile Picture Styles */
-.profile-container {
-    text-align: center;
-    margin-bottom: 20px;
-}
+      .language-switcher a {
+        color: var(--text-color);
+        text-decoration: none;
+        font-weight: 600;
+        padding: 8px 16px;
+        transition:
+          color 0.3s,
+          background-color 0.3s;
+        border: 2px solid var(--highlight-color);
+        border-radius: 4px;
+      }
 
-.profile-picture {
-    width: 200px;
-    height: 200px;
-    border-radius: 50%;
-    object-fit: cover;
-}
+      .language-switcher a:hover {
+        background-color: var(--highlight-color);
+        color: var(--background-color);
+      }
 
-/* Logo Styles */
-.logo {
-    width: var(--logo-size);
-    height: var(--logo-size);
-}
+      .title-section {
+        text-align: center;
+        margin-bottom: 20px;
+      }
 
-/* Specific colors for each icon - adjusted for vibrancy */
-.email-logo {
-    filter: invert(17%) sepia(89%) saturate(7493%) hue-rotate(354deg) brightness(100%) contrast(100%);
-}
+      .title-section h1 {
+        font-size: 2.5rem;
+        margin-bottom: 10px;
+        font-weight: 600;
+      }
 
-.cv-logo {
-    filter: invert(32%) sepia(100%) saturate(850%) hue-rotate(180deg) brightness(110%) contrast(120%);
-}
+      .title-section h2 {
+        font-size: 1.5rem;
+        font-weight: 300;
+        color: var(--highlight-color);
+      }
 
-.github-logo {
-    filter: invert(55%) sepia(10%) saturate(200%) hue-rotate(200deg) brightness(105%) contrast(110%);
-}
+      nav {
+        display: flex;
+        justify-content: center;
+        flex-wrap: wrap;
+        gap: 15px;
+        margin-bottom: 40px;
+      }
 
-.orcid-logo {
-    filter: invert(50%) sepia(100%) saturate(500%) hue-rotate(90deg) brightness(115%) contrast(120%);
-}
-.photography-icon {
-    font-size: 20px;  /* Adjust the size as needed */
-    margin-right: 8px; /* Add spacing between the icon and text */
-    color: var(--text-color); /* Ensures it matches the theme */
-}
+      nav a {
+        color: var(--text-color);
+        text-decoration: none;
+        padding: 10px 15px;
+        transition:
+          color 0.3s,
+          background-color 0.3s;
+        font-weight: 500;
+        display: flex;
+        align-items: center;
+        gap: 8px;
+        border-radius: 4px;
+      }
 
+      nav a:hover {
+        color: var(--background-color);
+        background-color: var(--hover-color);
+        border-radius: 4px;
+      }
+
+      a {
+        color: var(--link-color);
+        text-decoration: none;
+      }
+
+      a:hover {
+        color: var(--link-hover-color);
+      }
+
+      main {
+        max-width: 800px;
+        margin: 0 auto;
+      }
+
+      section {
+        margin-bottom: 40px;
+      }
+
+      section h3 {
+        font-size: 1.75rem;
+        margin-bottom: 20px;
+        color: var(--highlight-color);
+      }
+
+      ul.publications {
+        list-style-type: none;
+      }
+
+      ul.publications li {
+        margin-bottom: 15px;
+      }
+
+      ul.publications li strong {
+        color: var(--highlight-color);
+      }
+
+      footer {
+        text-align: center;
+        padding: 20px 0;
+        border-top: 1px solid var(--border-color);
+        font-size: 0.9rem;
+        color: rgba(255, 255, 255, 0.8);
+      }
+
+      /* Responsive Design */
+      @media (max-width: 600px) {
+        .title-section h1 {
+          font-size: 2rem;
+        }
+
+        .title-section h2 {
+          font-size: 1.25rem;
+        }
+
+        nav {
+          flex-direction: column;
+          align-items: center;
+        }
+
+        .language-switcher {
+          width: 100%;
+          display: flex;
+          justify-content: flex-end;
+        }
+      }
+
+      /* Profile Picture Styles */
+      .profile-container {
+        text-align: center;
+        margin-bottom: 20px;
+      }
+
+      .profile-picture {
+        width: 200px;
+        height: 200px;
+        border-radius: 50%;
+        object-fit: cover;
+      }
+
+      /* Logo Styles */
+      .logo {
+        width: var(--logo-size);
+        height: var(--logo-size);
+      }
+
+      /* Specific colors for each icon - adjusted for vibrancy */
+      .email-logo {
+        filter: invert(17%) sepia(89%) saturate(7493%) hue-rotate(354deg)
+          brightness(100%) contrast(100%);
+      }
+
+      .cv-logo {
+        filter: invert(32%) sepia(100%) saturate(850%) hue-rotate(180deg)
+          brightness(110%) contrast(120%);
+      }
+
+      .github-logo {
+        filter: invert(55%) sepia(10%) saturate(200%) hue-rotate(200deg)
+          brightness(105%) contrast(110%);
+      }
+
+      .orcid-logo {
+        filter: invert(50%) sepia(100%) saturate(500%) hue-rotate(90deg)
+          brightness(115%) contrast(120%);
+      }
+      .photography-icon {
+        font-size: 20px; /* Adjust the size as needed */
+        margin-right: 8px; /* Add spacing between the icon and text */
+        color: var(--text-color); /* Ensures it matches the theme */
+      }
     </style>
-</head>
-<body>
+  </head>
+  <body>
     <header>
-        <div class="language-switcher">
-            <a href="index.html">EN</a>
-        </div>
+      <div class="language-switcher">
+        <a href="index.html">EN</a>
+      </div>
     </header>
 
     <!-- Profile Picture -->
     <div class="profile-container">
-        <img src="assets/profile.jpeg" alt="Georges Kanaan" class="profile-picture">
+      <img
+        src="assets/profile.jpeg"
+        alt="Georges Kanaan"
+        class="profile-picture"
+      />
     </div>
 
     <div class="title-section">
-        <h1>Georges Kanaan</h1>
-        <h2>La Simplicité à l'Ésprit</h2>
+      <h1>Georges Kanaan</h1>
+      <h2>La Simplicité à l'Ésprit</h2>
     </div>
 
     <nav>
-        <a href="mailto:georges@gkanaan.com" aria-label="Courriel">
-            <img src="https://cdn.jsdelivr.net/npm/simple-icons@v5/icons/gmail.svg" alt="Email" class="logo email-logo">
-            Courriel
-        </a>
-        <a href="assets/cvs/cv_fr.pdf" target="_blank" aria-label="Curriculum Vitae">
-            <img src="https://cdn.jsdelivr.net/npm/simple-icons@14.4.0/icons/readdotcv.svg" alt="Curriculum Vitae" class="logo cv-logo">
-            Curriculum Vitae
-        </a>
-        <a href="photography.html" aria-label="Photography">
-            <i class="fas fa-camera photography-icon"></i> Photographie
-        </a>
-        <a href="https://github.com/Ge0rges" target="_blank" aria-label="GitHub">
-            <img src="https://cdn.jsdelivr.net/npm/simple-icons@v5/icons/github.svg" alt="GitHub" class="logo github-logo">
-            GitHub
-        </a>
-        <a href="https://orcid.org/0000-0002-5721-1138" target="_blank" aria-label="ORCiD">
-            <img src="https://cdn.jsdelivr.net/npm/simple-icons@v5/icons/orcid.svg" alt="ORCiD" class="logo orcid-logo">
-            ORCiD
-        </a>
+      <a href="mailto:georges@gkanaan.com" aria-label="Courriel">
+        <img
+          src="https://cdn.jsdelivr.net/npm/simple-icons@v5/icons/gmail.svg"
+          alt="Email"
+          class="logo email-logo"
+        />
+        Courriel
+      </a>
+      <a
+        href="assets/cvs/cv_fr.pdf"
+        target="_blank"
+        aria-label="Curriculum Vitae"
+      >
+        <img
+          src="https://cdn.jsdelivr.net/npm/simple-icons@14.4.0/icons/readdotcv.svg"
+          alt="Curriculum Vitae"
+          class="logo cv-logo"
+        />
+        Curriculum Vitae
+      </a>
+      <a href="photography.html" aria-label="Photography">
+        <i class="fas fa-camera photography-icon"></i> Photographie
+      </a>
+      <a href="https://github.com/Ge0rges" target="_blank" aria-label="GitHub">
+        <img
+          src="https://cdn.jsdelivr.net/npm/simple-icons@v5/icons/github.svg"
+          alt="GitHub"
+          class="logo github-logo"
+        />
+        GitHub
+      </a>
+      <a
+        href="https://orcid.org/0000-0002-5721-1138"
+        target="_blank"
+        aria-label="ORCiD"
+      >
+        <img
+          src="https://cdn.jsdelivr.net/npm/simple-icons@v5/icons/orcid.svg"
+          alt="ORCiD"
+          class="logo orcid-logo"
+        />
+        ORCiD
+      </a>
     </nav>
 
     <main>
-        <section>
-            <h3>Articles de Recherches</h3>
-            <ul class="publications">
-                <li>
-                    Georges Kanaan, Tori M. Hoehler, Go Iwahana, and Jody W. Deming. 2023.
-                    <strong>
-                        <a href="https://doi.org/10.3389/fmicb.2023.1206641" target="_blank">
-                            Modeled energetics of bacterial communities in ancient subzero brines.
-                        </a>
-                    </strong>
-                    Frontiers in Microbiology: Studies on life at the energetic edge.
-                </li>
-                <li>
-                    Georges Kanaan, Kai Wen Zheng and Lucas Fenaux. 2021.
-                    <strong>
-                        <a href="assets/publications/pss.pdf" target="_blank">
-                            A Novel Approach to Lifelong Learning: The Plastic Support Structure.
-                        </a>
-                    </strong>
-                    arXiv 2106.06298.
-                </li>
-                <li>
-                    Steve Mann, Zhiyang Pan, Yi Tao, Anqi Gao, Xingchen Tao, Danson Evan Garcia, 
-                    Dawei Shi, and Georges Kannan. 2020.
-                    <strong>
-                        <a href="assets/publications/ieeeprosopagnosia2020.pdf" target="_blank">
-                            Face Recognition and Rehabilitation: A Wearable Assistive and Training System 
-                            for Prosopagnosia.
-                        </a>
-                    </strong>
-                    In the 2020 IEEE International Conference on Systems, Man and Cybernetics (SMC’20).
-                </li>
-                <li>
-                    Steve Mann, Derek Lam, Kyle E. Mathewson, Cayden Pierce, Jeremy Stairs, 
-                    Jesse Hernandez, Georges Kanaan, Luke Piette, Humza Khokhar, and Christina Mann. 2019.
-                    <strong>
-                        <a href="assets/publications/ieeeeyeasacamera.pdf" target="_blank">
-                            The Human Eye as a Camera.
-                        </a>
-                    </strong>
-                    In the IEEE International Conference on E-health Networking, 
-                    Application & Services (HealthCom’19).
-                </li>
-                <li>
-                    Steve Mann, Diego Defaz, Cayden Pierce, Derek Lam, Jeremy Stairs, Jesse Hernandez, 
-                    Qiushi Li, Yi Xin Xiang, Georges Kanaan, Hongyu Chen, Graeme Aylward, 
-                    Megan Jorritsma, Christina Mann. 2019.
-                    <strong>
-                        <a href="assets/publications/acmeyeasacamera.pdf" target="_blank">
-                            Keynote – Eye Itself as a Camera: Sensors, Integrity, and Trust.
-                        </a>
-                    </strong>
-                    In the 5th ACM Workshop on Wearable Systems and Applications (WearSys’19).
-                </li>
-            </ul>
-        </section>
-        
+      <section>
+        <h3>Articles de Recherches</h3>
+        <ul class="publications">
+          <li>
+            Georges Kanaan and Jody W. Deming. 2025.
+            <strong>
+              <a href="https://doi.org/10.1093/ismejo/wraf198" target="_blank">
+                Multiple roles of DNA methylation in sea-ice bacterial
+                communities and associated viruses.
+              </a>
+            </strong>
+            The ISME Journal.
+          </li>
+          <li>
+            Georges Kanaan, Tori M. Hoehler, Go Iwahana, and Jody W. Deming.
+            2023.
+            <strong>
+              <a
+                href="https://doi.org/10.3389/fmicb.2023.1206641"
+                target="_blank"
+              >
+                Modeled energetics of bacterial communities in ancient subzero
+                brines.
+              </a>
+            </strong>
+            Frontiers in Microbiology: Studies on life at the energetic edge.
+          </li>
+          <li>
+            Georges Kanaan, Kai Wen Zheng and Lucas Fenaux. 2021.
+            <strong>
+              <a href="assets/publications/pss.pdf" target="_blank">
+                A Novel Approach to Lifelong Learning: The Plastic Support
+                Structure.
+              </a>
+            </strong>
+            arXiv 2106.06298.
+          </li>
+          <li>
+            Steve Mann, Zhiyang Pan, Yi Tao, Anqi Gao, Xingchen Tao, Danson Evan
+            Garcia, Dawei Shi, and Georges Kannan. 2020.
+            <strong>
+              <a
+                href="assets/publications/ieeeprosopagnosia2020.pdf"
+                target="_blank"
+              >
+                Face Recognition and Rehabilitation: A Wearable Assistive and
+                Training System for Prosopagnosia.
+              </a>
+            </strong>
+            In the 2020 IEEE International Conference on Systems, Man and
+            Cybernetics (SMC’20).
+          </li>
+          <li>
+            Steve Mann, Derek Lam, Kyle E. Mathewson, Cayden Pierce, Jeremy
+            Stairs, Jesse Hernandez, Georges Kanaan, Luke Piette, Humza Khokhar,
+            and Christina Mann. 2019.
+            <strong>
+              <a
+                href="assets/publications/ieeeeyeasacamera.pdf"
+                target="_blank"
+              >
+                The Human Eye as a Camera.
+              </a>
+            </strong>
+            In the IEEE International Conference on E-health Networking,
+            Application & Services (HealthCom’19).
+          </li>
+          <li>
+            Steve Mann, Diego Defaz, Cayden Pierce, Derek Lam, Jeremy Stairs,
+            Jesse Hernandez, Qiushi Li, Yi Xin Xiang, Georges Kanaan, Hongyu
+            Chen, Graeme Aylward, Megan Jorritsma, Christina Mann. 2019.
+            <strong>
+              <a href="assets/publications/acmeyeasacamera.pdf" target="_blank">
+                Keynote – Eye Itself as a Camera: Sensors, Integrity, and Trust.
+              </a>
+            </strong>
+            In the 5th ACM Workshop on Wearable Systems and Applications
+            (WearSys’19).
+          </li>
+        </ul>
+      </section>
     </main>
 
     <footer>
-        &copy; <span id="currentYear"></span> Georges Kanaan. All rights reserved.
+      &copy; <span id="currentYear"></span> Georges Kanaan. All rights reserved.
     </footer>
 
     <!-- JavaScript to Update Current Year -->
     <script>
-        document.getElementById('currentYear').textContent = new Date().getFullYear();
+      document.getElementById("currentYear").textContent =
+        new Date().getFullYear();
     </script>
-</body>
+  </body>
 </html>
